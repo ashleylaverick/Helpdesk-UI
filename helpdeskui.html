@@ -63,13 +63,13 @@
 				document.getElementById("pendbutton").focus();
 			});
 			$(function(){
-		    $( "#Submit" ).click(function() {
+		    $( "#Submit" ).click(function() { //When the submit button is pressed the field borders inherit the preset colours
 		      $("#callername").css({"border-bottom-color":"inherit",});
 		      $("#serialno").css({"border-bottom-color":"inherit",});
 		      $("#ProblemDescription").css({"border-bottom-color":"inherit",});
-		      if ($.trim($("#callername").val())== ""){
+		      if ($.trim($("#callername").val())== ""){ //trim all spaces if the field is still empty then do the below
 		        alert("Ticket cannot be submitted with empty fields. Please complete all fields.");
-		        $("#callername").css({"border-bottom-color":"red",});
+		        $("#callername").css({"border-bottom-color":"red",}); // field bottom border is set to red and an alert to the screen is made
 		      }
 		      else if ($.trim($("#serialno").val()) == "") {
 		        alert("Ticket cannot be submitted with empty fields. Please complete all fields.");
