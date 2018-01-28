@@ -1,0 +1,171 @@
+<!doctype html>
+<head>
+  <title>Helpdesk UI</title>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="C:\Users\Ashley Laverick\Desktop\jquery-ui.css">
+  <script type="text/javascript">
+    $( function() {
+      $( "#tabs" ).tabs();
+    } );
+  </script>
+  <script type="text/javascript" src="myscripts.js">
+  </script>
+</head>
+<body>
+  <p id="logonnoti">You are now logged in as: <b><script>username</script></b></p>	<!--Displays the user name and ID in corner. Based upon who is logged in-->
+  <form action="login.html">
+    <input type="submit" class="logoutbut" value="Logout" style="z-index:4;" onclick="alert('You have now signed out.')"/>	<!--logout notification-->
+  </form>
+  <h1>Helpdesk UI</h1>
+  <div id="window">
+    <div id="tabs">
+      <ul class="tabs">
+        <li><a href="#tabs-1">Create New Ticket</a></li>
+        <li><a href="#tabs-2">View Pending Problems</a></li>
+        <li><a href="#tabs-3">View Solved Problems</a></li>
+      </ul>
+      <div id="tabs-1">
+        <h2>New Ticket Log</h2>
+        <form action="" method="post" id="CreateTicket" novalidate="NoValidate">
+          <div id="leftpane">
+            <label for="callername">Caller Name: *</label>	<!--label for name input -->
+            <label for="operatorid" style="float: right; position: relative; right: 10%;">Operator ID</label>	<!--label for operator ID input -->
+            <br>
+            <input type="text" name="operatorid" value="" placeholder="4322" disabled="disabled" id="operatorid" style="float:right; position: relative; right: 10%; padding: 3px; width: 180px; font-size: 16px;"> <!-- place CSS in external stylesheet, operator ID - auto filled-->
+            <input type="text" name="callername" value="" id="callername" placeholder="Enter Caller Name" onchange="populateDetails()"> <!--caller name input, runs populateDetails function when changed-->
+            <br>
+            <br>
+            <label for="serialno">Equipment Serial Number: *</label>	<!--label for serial no input -->
+            <label for="problemid" style="float:right; position: relative; right: 10%;">Problem ID</label>	<!-- label for problem ID input -->
+            <br>
+            <input type="text" name="serialno" value="" id="serialno" placeholder="Enter Serial No.">	<!-- serial no input -->
+            <input type="text" name="problemid" value="1381936" disabled="disabled" id="problemid" style="float:right; position: relative; right: 10%; font-size: 16px; padding: 3px; width: 180px;"> <!--problem id input, automatically generated -->
+            <br>
+            <br>
+            <label for="datetime">Date of Query:*</label>	<!--label for datetime input -->
+            <label style="float:right; position: relative; right: 10%;">Call ID</label>	<!-- label for call ID field -->
+            <br>
+            <input type="date" id="datetime">	<!-- date picker, date input -->
+            <input type="text" disabled="disabled" placeholder="43920" id="callid" style="float:right; position: relative; right: 10%; padding: 3px; width: 180px; font-size: 16px;">	<!--call id field, automatically generated -->
+            <br>
+            <br>
+            <label for="problem">Problem Type:</label>	<!-- label for problem type input -->
+            <br>
+            <input type="text" name="Problem" list="ProblemTypeList" placeholder="Enter or select problem type" style="width: 250px">	<!--problem type input, list - autocompletes -->
+            <datalist id="ProblemTypeList">
+              <option value="Printing">
+              <option value="Server">
+              <option value="Login">
+              <option value="Telephone">
+            </datalist>
+            <br>
+            <br>
+            <label for="JobSpecialist">Job Specialist:</label>	<!--label for job specialist input -->
+            <br>
+            <select id="JobSpecialist" style="font-size: 18px; position: relative; top: 3px;"> <!--select input for associated job specialist -->
+              <option value="John Wall"> Dan Totennnan- 1 </option>
+              <option value="John Wall"> Elon Musk - 3 </option>
+              <option value="Kevin Durant">Rob Garder - 4 </option>
+              <option value="John Spec">George Snow - 7 </option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+          <div id="rightpane">
+            <label>Caller's ID:</label>
+            <label style="float: right; position: relative; right:15%;">Job Title:</label> <!-- label for job style input -->
+            <br>
+            <input type="text" id="callerid" disabled="disabled" placeholder="Caller's ID"> <!-- caller ID input -->
+            <input type="text" id="jobtitle" disabled="disabled" placeholder="Job Title" style="float: right; position: relative; right:15%;">	<!-- job title input, automatically filled -->
+            <br>
+            <br>
+            <label>Department:</label>
+            <label style="float: right; position: relative; right:15%;">Telephone Number:</label> <!-- label for tele number input -->
+            <br>
+            <input type="text" id="dept" disabled="disabled" placeholder="Department">	<!-- department input, autmatically filled -->
+            <input type="text" id="telenumber" disabled="disabled" placeholder="Telephone Number" style="float: right; position: relative; right:15%;"> <!-- telephone number input -->
+            <br>
+            <br>
+            <div class="label">Description of Problem:</div>
+            <br>
+            <textarea id="ProblemDescription" placeholder="Enter a Description of the problem...."> </textarea>	<!--problem description input -->
+            <br>
+            <br>
+            <button type="button" id="Cancel">Cancel</button>	<!-- cancels form, clear fields -->
+            <button type="button" id="Submit">Submit</button>	<!-- submits form -->
+          </div>
+        </form>
+      </div>
+      <div id="tabs-2">
+        <h2>Pending Problems</h2>
+				<table class="table">
+					<tr>
+						<th>Problem ID</th>
+						<th>Problem Description</th>
+						<th>Problem Type</th>
+						<th>Specialist ID</th>
+						<th>Operator ID</th>
+						<th>Caller ID</th>
+						<th style="border: solid 1px rgb(230,230,230); background-color: rgb(230,230,230);"></th> <!-- inline CSS to get rid of borders above cell which updatebutton is in -->
+					</tr>
+					<tr>
+						<td>3934435</td>
+						<td>Numerous failed attempts at login.</td>
+						<td>Login</td>
+						<td>2</td>
+						<td>4322</td>
+						<td>7363726</td>
+						<td class="updatebutton" id="updatebutton"><button>Mark as solved</button></td>  <!-- class and ID necessary? -->
+					</tr>
+					<tr>
+						<td>1233432</td>
+						<td>Cannot print in colour.</td>
+						<td>Printing</td>
+						<td>3</td>
+						<td>4322</td>
+						<td>6273653</td>
+						<td class="updatebutton1" id="updatebutton1"><button>Mark as solved</button></td>
+					</tr>
+				</table>
+      </div>
+      <div id="tabs-3">
+        <h2>Solved Problems</h2>
+				<table>
+					<tr>
+						<th>Problem ID</th>
+						<th>Problem Description</th>
+						<th>Problem Type</th>
+						<th>Specialist ID</th>
+						<th>Operator ID</th>
+						<th>Resolution ID</th>
+						<th>Resolution Description</th>
+					</tr>
+					<tr>
+						<td>1132423</td>
+						<td>Keyboard not typing.</td>
+						<td>Hardware (peripherals)</td>
+						<td>3</td>
+						<td>4322</td>
+						<td>3840281</td>
+						<td>Replacement keyboard issued as the connector was faulty.</td>
+					</tr>
+					<tr>
+						<td>3224422</td>
+						<td>Cannot login using correct details.</td>
+						<td>Login</td>
+						<td>2</td>
+						<td>4322</td>
+						<td>2283947</td>
+						<td>Password reset.</td>
+					</tr>
+				</table>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
