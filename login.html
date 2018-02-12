@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title> Login </title>
+  <style type="text/css">
+  html{font-family: Trebuchet MS; color: #333; font-size: 20px;}
+
+  #Container{ width: 100%; height: 768px; background: rgb(255,255,255);}
+  #Header{ width: 100%; height: 10%; background: rgb(255,255,255); margin:0 auto;}
+  #Logo {float: left; width: 10%; height: 80%; background: #666; text-align: center;}
+  #Main{height:93%; background-color: rgb(255,255,255); clear:both; text-align: center;}
+  #MainTop{padding: 2%; height: 40%; width:45%; clear:both; background-color: rgb(211,211,215); margin: 0 auto; align-content: left;; border-radius: 10px;}
+
+  img{ border-radius: 10px;}
+  button{ padding: 1.5% 5%; margin: 8px 0;}
+  button:hover{opacity: 0.8;}
+  .mytext {width: 200px; font-family: Trebuchet MS; color: #333; font-size: 18px;}
+
+
+  </style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/9966ED31-457A-F941-959C-5723950FC1D1/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/1D1CF0593275-C959-149F-A754-13DE6699/abn/main.css"/><script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+  $(function(){
+		$("#btnSignin").click(function(){
+		$("#txtUsername").css({"border-bottom-color":"inherit",});
+		$("#txtPassword").css({"border-bottom-color":"inherit",});
+
+		if (($("#txtUsername").val() == "4322") && ($("#txtPassword").val() == "12345")){
+        alert("Sign In Successful!");
+		$("#txtUsername").val("");
+		$("#txtPassword").val("");
+		window.location = "helpdeskui.html";
+      }
+	  else {
+        alert("Incorrect Username or Password");
+		$("#txtUsername").css({"border-bottom-color":"red",});
+		$("#txtPassword").css({"border-bottom-color":"red",});
+      }
+    });
+});;
+  </script>
+</head>
+<body>
+  <div id="Container">
+    <!-- This is the Header-->
+    <div id="Header">
+
+    </div>
+    <div id="Main">
+      <img src="Logo2.png" alt="logo"/>
+      <h3><u> Sign in </u></h3>
+      <div id="MainTop">
+        <form action="tabsui.php" method="GET">
+          <p>User ID</p>
+          <input type="text" name="userid" placeholder="User ID" id="txtUsername" class="mytext"><br>
+          <p>Password</p>
+          <input type="password" name="" placeholder="***************" id="txtPassword" class="mytext"><br><br>
+          <button type="button" id="btnSignin">Sign in</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

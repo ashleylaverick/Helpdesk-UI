@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js">
+    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+    </script>
+    <script src="myscripts.js">
+    </script>
+    <script>
+      $(function() {
+        $( "#tabs" ).tabs();
+      });
+    </script>
+    <title>Helpdesk UI</title>
+  </head>
+  <body>
+    <p id="logonnoti">You are now logged in as: <b>$username</b></p>	<!--Displays the user name and ID in corner. Based upon who is logged in-->
+    <form action="login.html">
+      <input type="submit" class="logoutbut" value="Logout" style="z-index:4;" onclick="alert('You have now signed out.')"/>	<!--logout notification-->
+    </form>
+    <h1>Helpdesk UI</h1>
+    <div id="window">
+      <div id="tabs">
+        <ul class="tabs">
+          <li><a href="#tabs-1">Helpdesk Specialist Analytics</a></li>
+          <li><a href="#tabs-2">Equipment Analytics</a></li>
+          <li><a href="#tabs-3">Problem Type Analytics</a></li>
+        </ul>
+        <div id="tabs-1">
+          <br>
+            <input type="text" placeholder="Enter specialist Staff ID here..." size="30"></input>
+          <br>
+          <br>
+          <table id="helpdesk specialist">
+            <tr>
+              <th> Specialist ID </th>
+              <th> Total Open </th>
+              <th> Total Closed </th>
+              <th> Average Time to Solve Problem</th>
+            </tr>
+            <tr>
+              <td>1234</th>
+              <td>2</td>
+              <td>5</td>
+              <td>2 hours</td>
+            </tr>
+          </table>
+        </div>
+        <div id="tabs-2" class="tabs-2">
+          <br>
+            <input type="text" id="searchbox" placeholder="Enter supplier name here..." size="30" onkeyup="sortTable()"></input>
+          <br>
+          <br>
+          <table id="equipment">
+            <tr>
+              <th> Supplier </th>
+              <th> Total Open </th>
+              <th> Total Closed </th>
+              <th> Total Cumlative Problems </th>
+            </tr>
+            <tr>
+              <td>Samsung</td>
+              <td>4</td>
+              <td>6</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Toshiba</td>
+              <td>5</td>
+              <td>4</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>LG</td>
+              <td>8</td>
+              <td>5</td>
+              <td>12</td>
+            </tr>
+          </table>
+        </div>
+        <div id="tabs-3" class="tabs-3">
+          <br>
+          <input type="text" placeholder="Enter problem type here..." size="30"></input>
+          <br>
+          <br>
+          <table>
+            <tr>
+              <th>Problem type</th>
+              <th>Total problems</th>
+              <th>Average Time to Solve</th>
+            </tr>
+            <tr>
+              <td>Printing</td>
+              <td>55</td>
+              <td>46 hours</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
